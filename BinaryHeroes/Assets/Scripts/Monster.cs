@@ -16,7 +16,7 @@ public class Monster : MonoBehaviour
     Animator anim;
     SpriteRenderer spriter;
 
-    void Start()
+    void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();

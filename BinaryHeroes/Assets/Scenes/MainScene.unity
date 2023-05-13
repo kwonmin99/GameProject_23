@@ -5018,8 +5018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 2436194874267530221, guid: a2be5eccdb4835a4790a19c9b7064db2, type: 3}
-  - {fileID: 2436194874267530221, guid: 1f5cdf3eeddcc574aaaddfe384fc9295, type: 3}
+  - {fileID: 5478549270371903441, guid: 7866dd287920fca419f94de1fcfd46ae, type: 3}
 --- !u!4 &1163312071
 Transform:
   m_ObjectHideFlags: 0
@@ -13969,6 +13968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d090b9446e4944f9887e50e471845a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameTime: 0
+  maxGameTime: 20
   poolManager: {fileID: 1163312070}
   player: {fileID: 1178951617354894080}
 --- !u!4 &1820865944
@@ -18298,6 +18299,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130189631, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: spawnData.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 130189631, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: spawnData.Array.data[0].speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 130189631, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: spawnData.Array.data[1].speed
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 130189631, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: spawnData.Array.data[0].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 130189631, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: spawnData.Array.data[1].health
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 130189631, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: spawnData.Array.data[0].spawnTime
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 130189631, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: spawnData.Array.data[1].spawnTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 130189631, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: spawnData.Array.data[1].spriteType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1178951616653346177, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
       propertyPath: m_RootOrder
       value: 3
