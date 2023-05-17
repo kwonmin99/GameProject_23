@@ -71,7 +71,7 @@ public class Weapon : MonoBehaviour
                 Batch();
                 break;
             default:
-                speed = 0.4f; // 연사 속도
+                speed = 0.6f; // 연사 속도
                 break;
         }
 
@@ -104,7 +104,7 @@ public class Weapon : MonoBehaviour
 
     void Fire(){
 
-        if(player.scanner.nearestTarget == null)
+        if(!player.scanner.nearestTarget)
             return;
 
         Vector3 targetPos = player.scanner.nearestTarget.position; // 위치

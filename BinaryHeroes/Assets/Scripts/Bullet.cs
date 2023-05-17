@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     void Awake() {
         rigid = GetComponent<Rigidbody2D>();
     }
+
     //데미지, 관통력, 방향
     public void Init(float damage, int per, Vector3 dir){
         this.damage = damage;
@@ -47,6 +48,7 @@ public class Bullet : MonoBehaviour
             rigid.velocity = Vector2.zero;
             gameObject.SetActive(false);
         }
+        
         // if(!collision.CompareTag("Area") || per == -100)
         //     return;
         

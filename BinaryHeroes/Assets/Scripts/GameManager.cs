@@ -36,4 +36,13 @@ public class GameManager : MonoBehaviour
 	public void GameStart(int id){
 
 	}
+
+	public void GetExp(){
+		exp++;
+
+		if(exp == nextExp[level]){
+			level++;
+			exp = 0;
+		}
+	}
 }
