@@ -71,7 +71,7 @@ public class Weapon : MonoBehaviour
                 Batch();
                 break;
             default:
-                speed = 0.6f; // 연사 속도
+                speed = 0.3f; // 연사 속도 0.6
                 break;
         }
 
@@ -84,9 +84,11 @@ public class Weapon : MonoBehaviour
     void Batch() {
         for(int index=0; index < count; index++) {
             Transform bullet = null;
+            
             if(index < transform.childCount){
                 bullet = transform.GetChild(index);
             }
+
             else{
                 bullet = GameManager.instance.pool.Get(prefabId).transform;
                 bullet.parent = transform;

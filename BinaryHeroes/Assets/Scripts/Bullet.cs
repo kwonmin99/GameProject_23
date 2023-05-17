@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        if(!collision.CompareTag("Enemy") || per == -100)
+        if(!collision.CompareTag("Enemy") || per == -1) //-100
             return;
 
         per--; // 관통력 줄여줌
@@ -39,19 +39,19 @@ public class Bullet : MonoBehaviour
 
     
     void OnTriggerExit2D(Collider2D collision) {
-        if(!collision.CompareTag("Area") || per == -100)
+        if(!collision.CompareTag("Area") || per == -1) // -100
             return;
         
         per--;
 
-        if (per == -1){
-            rigid.velocity = Vector2.zero;
-            gameObject.SetActive(false);
-        }
+        // if (per == -1){
+        //     rigid.velocity = Vector2.zero;
+        //     gameObject.SetActive(false);
+        // }
         
-        // if(!collision.CompareTag("Area") || per == -100)
-        //     return;
+        if(!collision.CompareTag("Area") || per == -100)
+            return;
         
-        // gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
