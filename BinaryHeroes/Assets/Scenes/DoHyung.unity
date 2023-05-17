@@ -4460,7 +4460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   prefabId: 1
-  damage: 3
+  damage: 10
   count: 0
   speed: 0
 --- !u!1 &148328333
@@ -9054,6 +9054,10 @@ PrefabInstance:
     - target: {fileID: 1178951616653346179, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178951617354894080, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1178951617354894080, guid: 2b18c44a44476a046840aede56a655d6, type: 3}
       propertyPath: joystic
@@ -18955,6 +18959,22 @@ PrefabInstance:
     - target: {fileID: 812450229596945531, guid: e06651bbf94fa83449064a0ff12cfa5d, type: 3}
       propertyPath: m_Name
       value: Bullet1
+      objectReference: {fileID: 0}
+    - target: {fileID: 812450229596945531, guid: e06651bbf94fa83449064a0ff12cfa5d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812450229760996852, guid: e06651bbf94fa83449064a0ff12cfa5d, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 812450229760996853, guid: e06651bbf94fa83449064a0ff12cfa5d, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812450229760996854, guid: e06651bbf94fa83449064a0ff12cfa5d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 812450229760996858, guid: e06651bbf94fa83449064a0ff12cfa5d, type: 3}
       propertyPath: m_RootOrder

@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     }
     void OnEnable()
      { 
-        //target이 null이라 참조를 못한다.
+        //target이 null
         target = GameManager.instance.player.GetComponent<Rigidbody2D>(); 
 
         isLive = true;

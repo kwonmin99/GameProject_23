@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         this.damage = damage;
         this.per = per;
 
-        if (per >= 0){
+        if (per > -1){
             rigid.velocity = dir * 15f; // 속력 곱해서 총알 날아가는 속도 증가
         }
     }
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
 
         per--; // 관통력 줄여줌
 
-        if(per < 0){
+        if(per == -1){
             rigid.velocity = Vector2.zero;
             gameObject.SetActive(false);
         }

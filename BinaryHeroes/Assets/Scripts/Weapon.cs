@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public int id;
-    public int prefabId;
-    public float damage;
+    public int id; // 무기 ID
+    public int prefabId; // 프리펩 ID
+    public float damage; // 무기 데미지
     public int count; //관통력
     public float speed; // 연사속도
 
@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
                 timer += Time.deltaTime;
 
                 if(timer > speed){ // 게임시간이 스피드 보다 크면 
-                    timer = 0f; // 초기화하면서 발사 
+                    timer = 2f; // 초기화하면서 발사 
                     Fire();
                 }
                 break;
@@ -67,11 +67,11 @@ public class Weapon : MonoBehaviour
 
         switch (id){
             case 0:
-                speed = 150;
+                speed = -150;
                 Batch();
                 break;
             default:
-                speed = 0.3f; // 연사 속도 0.6
+                speed = 0.3f; // 연사속도, 적을수록 많이 발사
                 break;
         }
 
@@ -100,7 +100,7 @@ public class Weapon : MonoBehaviour
             Vector3 rotVec = Vector3.forward * 360 * index / count;
             bullet.Rotate(rotVec);
             bullet.Translate(bullet.up * 1.5f, Space.World);
-            bullet.GetComponent<Bullet>().Init(damage, -100, Vector3.zero);  //.. -100 is Infinity Per
+            bullet.GetComponent<Bullet>().Init(damage, -1, Vector3.zero);  //.. -100 is Infinity Per
         }
     }
 
