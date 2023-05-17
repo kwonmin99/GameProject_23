@@ -36,8 +36,9 @@ public class Enemy : MonoBehaviour
     }
     void OnEnable()
      { 
-        target = GameManager.instance.player.GetComponent<Rigidbody2D>(); // 자기 스스로 타깃을 추가
-        
+        //target이 null이라 참조를 못한다.
+        target = GameManager.instance.player.GetComponent<Rigidbody2D>(); 
+
         isLive = true;
         coll.enabled = true;
         rigid.simulated = true;
