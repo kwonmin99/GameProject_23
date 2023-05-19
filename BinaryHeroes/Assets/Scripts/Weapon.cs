@@ -30,8 +30,8 @@ public class Weapon : MonoBehaviour
             default:
                 timer += Time.deltaTime;
 
-                if(timer > speed){ // 게임시간이 스피드 보다 크면 
-                    timer = 2f; // 초기화하면서 발사 
+                if(timer > speed){ 
+                    timer = 0f; // 초기화하면서 발사 
                     Fire();
                 }
                 break;
@@ -71,7 +71,7 @@ public class Weapon : MonoBehaviour
                 Batch();
                 break;
             default:
-                speed = 0.3f; // 연사속도, 적을수록 많이 발사
+                speed = 5f; // 연사속도, 적을수록 많이 발사
                 break;
         }
 
@@ -104,8 +104,8 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    void Fire(){
-
+    void Fire()
+    {
         if(!player.scanner.nearestTarget)
             return;
 
@@ -114,10 +114,13 @@ public class Weapon : MonoBehaviour
         dir = dir.normalized;
 
         Transform bullet = GameManager.instance.pool.Get(prefabId).transform;
+
+        if (bullet == null)
+            return;
+
         bullet.position = transform.position; // 위치
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // 지정된 축을 중심으로 목표를 향해 회전
         bullet.GetComponent<Bullet>().Init(damage, count, dir); // -1 is Infinity Per
-        
     }
     
 }
