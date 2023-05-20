@@ -14,14 +14,14 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        player = GetComponentInParent<Player>();
+        player = GameManager.instance.player;
     }
-    void Start()
-    {
-        Init();
-    }
+
     void Update()
     {
+        if (!GameManager.instance.isLive)
+            return;
+
         switch (id)
         {
             case 0:
@@ -53,9 +53,32 @@ public class Weapon : MonoBehaviour
         {
             Batch();
         }
+
+        player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
-    public void Init()
+
+    public void Init(ItemData data)
     {
+        //기초 작업
+        name = "Weapon " + data.itemId;
+        transform.parent = player.transform;
+
+        transform.localPosition = Vector3.zero;
+
+        //ID 작업
+        id = data.itemId;
+        damage = data.baseDamage;
+        count = data.baseCount;
+
+        for(int index=0;index < GameManager.instance.poolManager.prefabs.Length;index++)
+		{
+            if(data.projectile == GameManager.instance.poolManager.prefabs[index])
+			{
+                prefabid = index;
+                break;
+			}
+		}
+
         switch (id)
         {
             case 0:
@@ -68,6 +91,8 @@ public class Weapon : MonoBehaviour
                 speed = 0.3f;
                 break;
         }
+
+        player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
     void Batch()
     {

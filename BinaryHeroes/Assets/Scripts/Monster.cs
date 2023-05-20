@@ -28,6 +28,9 @@ public class Monster : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!GameManager.instance.isLive)
+            return;
+
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
             return;
 
@@ -40,7 +43,10 @@ public class Monster : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		if (!isLive)
+        if (!GameManager.instance.isLive)
+            return;
+
+        if (!isLive)
 			return;
 
 		spriter.flipX = target.position.x < rigid.position.x;

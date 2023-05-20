@@ -27,12 +27,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.isLive)
+            return;
+
         inputVec.x = joystic.Horizontal;
         inputVec.y = joystic.Vertical;
     }
 
 	private void FixedUpdate()
 	{
+        if (!GameManager.instance.isLive)
+            return;
+
         Move();
 	}
 
