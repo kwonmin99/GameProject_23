@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public Transform[] spawnPoint;
     public SpawnData[] spawnData;
 
+<<<<<<< HEAD
     int level;
     float timer;
 
@@ -20,10 +21,27 @@ public class Spawner : MonoBehaviour
 
         
         if(timer > (level == 0 ? 0.5f : 0.2f)){
+=======
+    float timer;
+
+    void Awake()
+    {
+        spawnPoint = GetComponentsInChildren<Transform>();
+    }
+
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+        if(timer > 0.2f)
+        {
+>>>>>>> myeongjun
             timer = 0;
             Spawn();
         }
     }
+<<<<<<< HEAD
     void Spawn(){
 
         //유튜브에서는 이렇게하는데 이렇게 하면 오류남
@@ -45,4 +63,18 @@ public class SpawnData
     public int spriteType; // 스프라이트 타입
     public int health; // 체력
     public float speed; // 속도
+=======
+
+    void Spawn()
+    {
+        
+
+    }
+}
+
+[System.Serializable]
+public class SpawnData
+{
+    public int spriteType;
+>>>>>>> myeongjun
 }
