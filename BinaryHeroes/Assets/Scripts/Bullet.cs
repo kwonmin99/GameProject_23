@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 using UnityEngine.UIElements;
 
-=======
->>>>>>> myeongjun
 
 public class Bullet : MonoBehaviour
 {
     public float damage;
     public int per;
 
-<<<<<<< HEAD
+
     Rigidbody2D rigid;
 
     void Awake() {
@@ -42,17 +39,19 @@ public class Bullet : MonoBehaviour
     }
 
     //area 밖에 나가면 투사체 제거
-    void OnTriggerExit2D(Collider2D collision) {        
-        if(!collision.CompareTag("Area") || per == -100)
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Area") || per == -100)
             return;
-        
+
         gameObject.SetActive(false);
-=======
+
+    }
+
     public void Init(float damage, int per)
     {
         this.damage = damage;
         this.per = per;
 
->>>>>>> myeongjun
     }
 }

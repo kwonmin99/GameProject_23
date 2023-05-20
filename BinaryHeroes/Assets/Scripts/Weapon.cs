@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
 using System.Runtime.ConstrainedExecution;
->>>>>>> myeongjun
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-<<<<<<< HEAD
     public int id; // 무기 ID
     public int prefabId; // 프리펩 ID
     public float damage; // 무기 데미지
