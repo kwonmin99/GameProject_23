@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     public DynamicJoystick joystic;
     
+    public Scanner scanner;
     Rigidbody2D rigid;
 
 
@@ -17,12 +18,10 @@ public class Player : MonoBehaviour
 	private void Awake()
 	{
         rigid = GetComponent<Rigidbody2D>();
+        // spriter = GetComponent<SpriteRenderer>();
+        // anim = GetComponent<Animator>();
+        scanner = GetComponent<Scanner>();
 	}
-
-	void Start()
-    {
-       
-    }
 
     void Update()
     {
@@ -36,13 +35,13 @@ public class Player : MonoBehaviour
 	}
 
 
-    //¿òÁ÷ÀÏ¶§ ÀÌ¿ëÇÏ´Â ÇÔ¼ö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ ï¿½Ì¿ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     void Move()
 	{
-        // Å° ÀÔ·Â°ª ÆòÁØÈ­ * ¼Óµµ
+        // Å° ï¿½Ô·Â°ï¿½ ï¿½ï¿½ï¿½ï¿½È­ * ï¿½Óµï¿½
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;  
 
-        // Å° ÀÔ·Â´ë·Î ¿òÁ÷ÀÌ±â
+        // Å° ï¿½Ô·Â´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½
         rigid.MovePosition(rigid.position + nextVec);
 
 

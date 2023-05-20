@@ -8,35 +8,29 @@ public class PoolManager : MonoBehaviour
 
     List<GameObject>[] pools;
 
-    void Awake()
-    {
+    void Awake() {
         pools = new List<GameObject>[prefabs.Length];
 
-        for (int index = 0; index < pools.Length; index++)
-        {
+        for(int index = 0; index < pools.Length; index++){
             pools[index] = new List<GameObject>();
         }
     }
 
-    public GameObject Get(int index)
-    {
+    public GameObject Get(int index){
         GameObject select = null;
-        //..¼±ÅÃÇÑ Ç®ÀÇ ³î°í ÀÖ´Â °ÔÀÓ¿ÀºêÁ§Æ® Á¢±Ù
-        foreach (GameObject item in pools[index])
-        {
-            if (!item.activeSelf)
-            {
-                //.. ¹ß°ßÇÏ¸é select º¯¼ö¿¡ ÇÒ´ç
+        //..ì„ íƒí•œ í’€ì˜ ë†€ê³  ìˆëŠ” ê²Œì„ì˜¤ë¸Œì íŠ¸ ì ‘ê·¼
+        foreach (GameObject item in pools[index]){
+            if(!item.activeSelf){
+                //.. ë°œê²¬í•˜ë©´ select ë³€ìˆ˜ì— í• ë‹¹
                 select = item;
                 select.SetActive(true);
                 break;
             }
         }
-        
-        //.. ¸ø Ã£¾ÒÀ¸¸é?
-        if (!select)
-        {
-            //.. »õ·Ó°Ô »ı¼ºÇÏ°í select º¯¼ö¿¡ ÇÒ´ç
+
+        //.. ëª» ì°¾ì•˜ìœ¼ë©´?
+        if(!select){
+            //.. ìƒˆë¡­ê²Œ ìƒì„±í•˜ê³  select ë³€ìˆ˜ì— í• ë‹¹
             select = Instantiate(prefabs[index], transform);
             pools[index].Add(select);
         }
