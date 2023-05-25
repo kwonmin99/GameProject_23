@@ -59,13 +59,13 @@ public class Weapon : MonoBehaviour
 
     public void Init(ItemData data)
     {
-        //±âÃÊ ÀÛ¾÷
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½
         name = "Weapon " + data.itemId;
         transform.parent = player.transform;
 
         transform.localPosition = Vector3.zero;
 
-        //ID ÀÛ¾÷
+        //ID ï¿½Û¾ï¿½
         id = data.itemId;
         damage = data.baseDamage;
         count = data.baseCount;
@@ -115,6 +115,7 @@ public class Weapon : MonoBehaviour
             bullet.Rotate(rotVec);
             bullet.Translate(bullet.up * 1.5f, Space.World);
             bullet.GetComponent<Bullet>().Init(damage, -1, Vector3.zero);
+            // AudioManager.instance.PlaySfx(AudioManager.Sfx.Melee);
         }
     }
     void Fire()
@@ -130,5 +131,6 @@ public class Weapon : MonoBehaviour
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Init(damage, count, dir);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Range);
     }
 }
