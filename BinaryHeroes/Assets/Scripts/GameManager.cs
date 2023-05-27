@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,10 +14,13 @@ public class GameManager : MonoBehaviour
 	public PoolManager poolManager;
     public Player player;
 	public LevelUp uiLevelUp;
+	public Result uiResult;
+	public GameObject enemyClearner;
+
 
 	[Header(" # Player Info")]
-	public int health;
-	public int maxHealth = 100;
+	public float health;
+	public float maxHealth = 100;
 	public int level;
 	public int kill;
 	public int exp;
@@ -27,58 +31,54 @@ public class GameManager : MonoBehaviour
 		instance = this;
 	}
 
-	// public void GameStart(int id){
-	// 	playerId = id;
-	// 	health = maxHealth;
-
-	// 	player.gameObject.SetActive(true);
-	// 	uiLevelUp.Select(playerId % 2);
-	// 	Resume();
-	// 	AudioManager.Instance.PlaySfx(AudioManager.Sfx.Select);
-	// }
-
-	// public void GameOver(){
-	// 	StartCourtine(GameoverRoutine());
-	// }
-
-	// IEnumerator GameoverRoutine(){
-	// 	isLive = false;
-
-	// 	yield return new WaitForSeconds(0.5f);
-
-	// 	uiResult.gameObject.SetActive(true);
-	// 	uiResult.Lose();
-	// 	Stop();
-
-	// 	AudioManager.instance.PlayBgm(false);
-	// 	AudioManager.instance.PlaySfx(AudioManager.Sfx.Lose);
-		
-	// }
-
-    private void Start()
+    public void GameStart()
     {
 		health = maxHealth;
-
 		uiLevelUp.Select(0);
+		Resume();
+		
 		AudioManager.instance.PlayBgm(true);
 		AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
+
+		isLive = true;
     }
 
-	// public void GameVictory(){
-	// 	StartCourtine(GameVictoryRoutine());
-	// }
+	public void GameOver()
+	{
+		StartCoroutine(GameOverRoutine());
+	}
 
-	// IEnumerator GameVictoryRoutine(){
-	// 	isLive = false;
-	// 	enemyCleaner.SetActive(true);
+	IEnumerator GameOverRoutine()
+	{
+		isLive = false;
+		yield return new WaitForSeconds(0.5f);
 
-	// 	yield return new WaitForSeconds(0.5f);
+		uiResult.gameObject.SetActive(true);
+		uiResult.Lose();
+		Stop();
+	}
 
-	// 	uiResult.gameObject.SetActive(true);
-	// 	uiResult.Win();
-	// 	Stop();
-	// 	AudioManager.Instance.PlaySfx(AudioManager.Sfx.Win);
-	// }
+		public void GameVictory()
+	{
+		StartCoroutine(GameVictoryRoutine());
+	}
+
+	IEnumerator GameVictoryRoutine()
+	{
+		isLive = false;
+		enemyClearner.SetActive(true);
+
+		yield return new WaitForSeconds(0.5f);
+
+		uiResult.gameObject.SetActive(true);
+		uiResult.Victory();
+		Stop();
+	}
+
+	public void GameRetry()
+	{
+		SceneManager.LoadScene(0);
+	}
 
     void Update()
 	{
@@ -90,11 +90,15 @@ public class GameManager : MonoBehaviour
 		if (gameTime > maxGameTime)
 		{
 			gameTime = maxGameTime;
+			GameVictory();
 		}
 	}
 
 	public void GetExp()
     {
+		if(!isLive)
+		return;
+
 		exp++;
 		if (exp == nextExp[Mathf.Min(level,nextExp.Length-1)])
         {

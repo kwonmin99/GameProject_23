@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
 
 	private void Awake()
 	{
-        icon = GetComponentsInChildren<Image>()[1];
+        icon = GetComponentsInChildren<Image>()[2];
         icon.sprite = data.itemIcon;
 
         Text[] texts = GetComponentsInChildren<Text>();

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Reposition : MonoBehaviour
 {
-	Collider2D collider;
+	Collider2D col;
 
 	private void Awake()
 	{
-		collider = GetComponent<Collider2D>();
+		col = GetComponent<Collider2D>();
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
@@ -39,7 +39,7 @@ public class Reposition : MonoBehaviour
 				break;
 
 			case "Enemy":
-				if (collider.enabled)
+				if (col.enabled)
 				{
 					transform.Translate(playerDir * 20 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f));
 				}

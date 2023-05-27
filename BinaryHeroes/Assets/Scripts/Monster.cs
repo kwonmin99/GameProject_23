@@ -10,6 +10,8 @@ public class Monster : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
 
+    public List<GameObject> Effects = new List<GameObject>();
+
     bool isLive;
 
     Rigidbody2D rigid;
@@ -76,6 +78,8 @@ public class Monster : MonoBehaviour
         if (!collision.CompareTag("Bullet") || !isLive)
             return;
 
+        Instantiate(Effects[Random.Range(0,Effects.Count)],transform.position,transform.rotation);
+
         health -= collision.GetComponent<Bullet>().damage;
         StartCoroutine(KnockBack());
 
@@ -95,7 +99,10 @@ public class Monster : MonoBehaviour
             GameManager.instance.GetExp();
             
             if(GameManager.instance.isLive)
+            {
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
+            }
+                
         }
     }
     IEnumerator KnockBack()

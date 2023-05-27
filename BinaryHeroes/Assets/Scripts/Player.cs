@@ -14,10 +14,16 @@ public class Player : MonoBehaviour
 
     public Scanner scanner;
 
+    public GameObject deadEffect;
+
+    Animator anim;
+
+    bool isDead = false;
 	private void Awake()
 	{
         rigid = GetComponent<Rigidbody2D>();
         scanner = GetComponent<Scanner>();
+        anim = GetComponent<Animator>();
 	}
 
 	void Start()
@@ -43,15 +49,42 @@ public class Player : MonoBehaviour
 	}
 
 
-    //¿òÁ÷ÀÏ¶§ ÀÌ¿ëÇÏ´Â ÇÔ¼ö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ ï¿½Ì¿ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     void Move()
 	{
-        // Å° ÀÔ·Â°ª ÆòÁØÈ­ * ¼Óµµ
+        // Å° ï¿½Ô·Â°ï¿½ ï¿½ï¿½ï¿½ï¿½È­ * ï¿½Óµï¿½
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;  
 
-        // Å° ÀÔ·Â´ë·Î ¿òÁ÷ÀÌ±â
+        // Å° ï¿½Ô·Â´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½
         rigid.MovePosition(rigid.position + nextVec);
 
 
     }
+
+	private void OnCollisionStay2D(Collision2D collision)
+	{
+        if (!GameManager.instance.isLive)
+            return;
+
+        GameManager.instance.health -= Time.deltaTime * 10;
+
+        if(GameManager.instance.health <0 )
+		{
+            for(int index = 2; index <transform.childCount; index++)
+			{
+                transform.GetChild(index).gameObject.SetActive(false);
+			}
+            if(!isDead)
+			{
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.PDead);
+                anim.SetTrigger("Dead");
+                Instantiate(deadEffect, transform.position, transform.rotation);
+                
+                isDead = true;
+                GameManager.instance.GameOver();
+            }
+            
+            
+		}
+	}
 }

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   itemId: 2
-  itemName: "\uD14C\uD06C\uB2C8\uCEEC \uC7A5\uAC11"
+  itemName: "\uACF5\uACA9\uC18D\uB3C4 \uAC15\uD654"
   itemDesc: "\uC5F0\uC0AC\uC18D\uB3C4 {0}% \uC99D\uAC00"
-  itemIcon: {fileID: -201829820, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  itemIcon: {fileID: 21300000, guid: fb6e93163cc427545910fcf3f3482e8d, type: 3}
   baseDamage: 0
   baseCount: 0
   damages:
