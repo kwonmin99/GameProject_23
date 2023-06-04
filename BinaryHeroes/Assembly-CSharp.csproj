@@ -74,6 +74,7 @@
      <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
      <Compile Include="Assets\Reach - Complete Sci-Fi UI\Scripts\UI Manager\UIManagerSplashScreen.cs" />
      <Compile Include="Assets\Reach - Complete Sci-Fi UI\Scripts\Core\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\Result.cs" />
      <Compile Include="Assets\Reach - Complete Sci-Fi UI\Scripts\UI Manager\UIManagerFontChanger.cs" />
      <Compile Include="Assets\Reach - Complete Sci-Fi UI\Scripts\Achievements\AchievementManager.cs" />
      <Compile Include="Assets\Reach - Complete Sci-Fi UI\Scripts\UI Manager\UIManager.cs" />
@@ -182,7 +183,6 @@
      <Compile Include="Assets\Reach - Complete Sci-Fi UI\Scripts\Achievements\AchievementManagerEditor.cs" />
      <Compile Include="Assets\Reach - Complete Sci-Fi UI\Scripts\Credits\CreditsSectionItem.cs" />
      <Compile Include="Assets\Reach - Complete Sci-Fi UI\Scripts\Rendering\GraphicsManagerEditor.cs" />
-     <Compile Include="Assets\Scripts\Result.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX (legacy)\Shaders\CFX3 Multiply Color.shader" />
